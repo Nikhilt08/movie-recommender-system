@@ -36,6 +36,10 @@ def recommend(movie):
     return recommended_movies, recommended_posters
 movies_dict=pickle.load(open('movies_dict.pkl', 'rb'))
 movies=pd.DataFrame(movies_dict)
+from sklearn.feature_extraction.text import CountVectorizer
+
+cv = CountVectorizer(max_features=5000, stop_words='english')
+vectors = cv.fit_transform(movies['tags']).toarray()
 from sklearn.metrics.pairwise import cosine_similarity
 similarity = cosine_similarity(vectors)
 st.title("Movie Recommender System")
