@@ -5,7 +5,7 @@ import requests
 
 
 def fetch_poster(movie_id):
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key=enter your api key&language=en-US"
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}?api_key={st.secrets['TMDB_API_KEY']}&language=en-US"
 
     data = requests.get(url)
     data = data.json()
