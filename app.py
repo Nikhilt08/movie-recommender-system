@@ -36,7 +36,8 @@ def recommend(movie):
     return recommended_movies, recommended_posters
 movies_dict=pickle.load(open('movies_dict.pkl', 'rb'))
 movies=pd.DataFrame(movies_dict)
-similarity=pickle.load(open('similarity.pkl', 'rb'))
+from sklearn.metrics.pairwise import cosine_similarity
+similarity = cosine_similarity(vectors)
 st.title("Movie Recommender System")
 option = st.selectbox(
 "HOW WOULD U LIKE TO BE CONTACTED",
